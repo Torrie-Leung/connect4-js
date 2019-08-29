@@ -10,6 +10,13 @@ class Connect4 {
 
   createGrid(){
     const $board = $(this.selector);
-    console.log($board)
+    console.log($board);
+    for(let row = 0; row< this.ROWS; row++){
+      const $row = $('<div>')
+        .addClass('row');
+      $board.append($row);
+      
+    }
+    console.log($board.html());
   }
 }
