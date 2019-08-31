@@ -6,11 +6,12 @@ class Connect4 {
     // const $grid = $(selector);
     // $grid.html('hey ha');
     this.createGrid();
+    this.setupEventListeners()
   }
 
   createGrid(){
     const $board = $(this.selector);
-    console.log($board);
+    //console.log($board);
     for(let row = 0; row< this.ROWS; row++){
       const $row = $('<div>')
         .addClass('row');
@@ -22,6 +23,12 @@ class Connect4 {
       $board.append($row);
       
     }
-    console.log($board.html());
+    //console.log($board.html());
+  }
+  setupEventListeners(){
+    const $board = $(this.selector);
+    $board.on('mouseenter','.col.empty', function () {
+      console.log('here',this)
+    })
   }
 }
