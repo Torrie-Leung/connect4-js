@@ -17,8 +17,10 @@ class Connect4 {
         .addClass('row');
       for(let col = 0; col< this.COLS; col++){
         const $col = $('<div>')
-          .addClass('col empty');
-          $row.append($col)
+          .addClass('col empty')
+          .attr('data-col',col)
+          .attr('data-row',row);
+          $row.append($col);
       }
       $board.append($row);
       
