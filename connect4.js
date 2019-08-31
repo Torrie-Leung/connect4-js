@@ -29,8 +29,34 @@ class Connect4 {
   }
   setupEventListeners(){
     const $board = $(this.selector);
+
+    function getLastEmptyCell(col){
+      const cells = $(`.col[data-col='${col}']`);
+      console.log(cells)
+      for(let i = cells.length - 1; i >= 0; i--){
+        const $cell = $(cells[i]);
+        //console.log($cell[0].attributes)
+        //console.log($cell[0].classList)
+        if($cell.hasClass('empty')){
+          //console.log(i,$cell[0].classList.value,$cell[0].dataset)
+          return $cell;
+        }
+        return null;
+      }
+      
+    }
+
     $board.on('mouseenter','.col.empty', function () {
-      console.log('here',this)
+      //console.log('here',this)
+      const col = $(this).data('col');
+      // const row = $(this).data('row');
+      // console.log('col:',col,' row:',row)
+      const $lastEmptyCell = getLastEmptyCell(col);
+      $lastEmptyCell.addClass(`next-red`);
+    })
+
+    $board.on('mouseleave','.col',function(){
+      $('.col').removeClass('next-red');
     })
   }
 }
